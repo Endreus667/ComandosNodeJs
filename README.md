@@ -12,27 +12,38 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas:
 ## Passo a Passo
 
 1. **Crie um Novo Projeto**  
+---------------------------------------
    Abra o terminal e execute os seguintes comandos:  
-   ```bash
+   bash
    mkdir meu-projeto
    cd meu-projeto
-   npm init -y
+   npm init -y}
+---------------------------------------
 
 2-Instale as Dependências 
+---------------------------------------
 
 npm install express
 npm install typescript ts-node @types/node @types/express --save-dev
 
+---------------------------------------
+
 3-Configure o TypeScript
+---------------------------------------
 
 npx tsc --init
 
+---------------------------------------
 4-Crie a Estrutura de Diretórios
+---------------------------------------
 
 mkdir src
 touch src/index.ts
 
+---------------------------------------
+
 5-Escreva o Código do Servidor
+
 ---------------------------------------
 
 import express from 'express';
@@ -67,8 +78,35 @@ app.listen(PORT, () => {
 ---------------------------------------
 
 7-Execute o Servidor
+---------------------------------------
 
 npm run dev
 
+---------------------------------------
 
+8-instale o nodemon e o helmet
+---------------------------------------
 
+npm install nodemon --save-dev
+npm install helmet
+
+---------------------------------------
+
+9-configuraçao do nodemon
+---------------------------------------
+"scripts": {
+  "start": "node dist/index.js",
+  "dev": "nodemon src/index.ts"
+}
+---------------------------------------
+
+10-Usando Helmet
+
+---------------------------------------
+
+import helmet from 'helmet';
+
+// Adicione este middleware antes de suas rotas
+app.use(helmet());
+
+---------------------------------------
