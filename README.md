@@ -18,21 +18,21 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas:
    cd meu-projeto
    npm init -y
 
-2-instale dependencias 
+2-Instale as Dependências 
 
 npm install express
 npm install typescript ts-node @types/node @types/express --save-dev
 
-3-instale o tsc
+3-Configure o TypeScript
 
 npx tsc --init
 
-4-crie a estrutura de diretorios
+4-Crie a Estrutura de Diretórios
 
 mkdir src
 touch src/index.ts
 
-5-escreva o codigo no servidor
+5-Escreva o Código do Servidor
 ---------------------------------------
 
 import express from 'express';
@@ -66,7 +66,7 @@ app.listen(PORT, () => {
 
 ---------------------------------------
 
-7-executar o servidor
+7-Execute o Servidor
 
 npm run dev
 
