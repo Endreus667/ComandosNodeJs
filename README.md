@@ -1,6 +1,6 @@
-# Configuração de Servidor Node.js com TypeScript e Express
+# Configuração de Servidor Node.js com TypeScript e Express e prisma
 
-Este guia fornece os comandos iniciais para configurar e executar um servidor básico usando Node.js, TypeScript e Express.
+Este guia fornece os comandos iniciais para configurar e executar um servidor básico usando Node.js, TypeScript e Express. Junto com Conexao prisma!
 
 ## Pré-requisitos
 
@@ -11,7 +11,7 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas:
 
 ## Passo a Passo
 
-1. **Crie um Novo Projeto**  
+##1. **Crie um Novo Projeto**  
 ---------------------------------------
    Abra o terminal e execute os seguintes comandos:  
    bash
@@ -20,7 +20,7 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas:
    npm init -y}
 ---------------------------------------
 
-2-Instale as Dependências 
+##2-Instale as Dependências 
 ---------------------------------------
 
 npm install express
@@ -28,13 +28,13 @@ npm install typescript ts-node @types/node @types/express --save-dev
 
 ---------------------------------------
 
-3-Configure o TypeScript
+##3-Configure o TypeScript
 ---------------------------------------
 
 npx tsc --init
 
 ---------------------------------------
-4-Crie a Estrutura de Diretórios
+##4-Crie a Estrutura de Diretórios
 ---------------------------------------
 
 mkdir src
@@ -42,7 +42,7 @@ touch src/index.ts
 
 ---------------------------------------
 
-5-Escreva o Código do Servidor
+##5-Escreva o Código do Servidor
 
 ---------------------------------------
 
@@ -66,7 +66,7 @@ app.listen(PORT, () => {
 
 ---------------------------------------
 
-6-Adicione Scripts no package.json
+##6-Adicione Scripts no package.json
 
 ---------------------------------------
 
@@ -77,14 +77,14 @@ app.listen(PORT, () => {
 
 ---------------------------------------
 
-7-Execute o Servidor
+##7-Execute o Servidor
 ---------------------------------------
 
 npm run dev
 
 ---------------------------------------
 
-8-instale o nodemon e o helmet
+##8-instale o nodemon e o helmet
 ---------------------------------------
 
 npm install nodemon --save-dev
@@ -92,7 +92,7 @@ npm install helmet
 
 ---------------------------------------
 
-9-configuraçao do nodemon
+##9-configuraçao do nodemon
 ---------------------------------------
 "scripts": {
   "start": "node dist/index.js",
@@ -100,7 +100,7 @@ npm install helmet
 }
 ---------------------------------------
 
-10-Usando Helmet
+##10-Usando Helmet
 
 ---------------------------------------
 
@@ -108,5 +108,58 @@ import helmet from 'helmet';
 
 // Adicione este middleware antes de suas rotas
 app.use(helmet());
+
+---------------------------------------
+
+#Configurando Banco com prisma##
+
+##1-instale o prisma npm 
+
+---------------------------------------
+
+install prisma --save-dev
+npm install @prisma/client
+
+---------------------------------------
+
+##2-Inicialize o Prisma
+
+---------------------------------------
+npx prisma init
+---------------------------------------
+
+##3-Configure o .env
+
+---------------------------------------
+
+DATABASE_URL="mysql://USERNAME:(nome)tPASSWORD@localhost:porta/nome-do-banco"
+
+---------------------------------------
+
+##4-Crie o Modelo no schema.prisma
+
+---------------------------------------
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+}
+
+---------------------------------------
+##5-Execute a Migração
+
+---------------------------------------
+
+npx prisma migrate dev --name init
 
 ---------------------------------------
