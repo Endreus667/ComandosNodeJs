@@ -1,24 +1,74 @@
-# Nome do Projeto
+# Configuração de Servidor Node.js com TypeScript e Express
 
-Uma breve descrição do que o projeto faz e sua finalidade.
-
-## Tecnologias Usadas
-
-- Node.js
-- TypeScript
-- Express
-- Prisma (ou qualquer outra tecnologia que você esteja usando)
+Este guia fornece os comandos iniciais para configurar e executar um servidor básico usando Node.js, TypeScript e Express.
 
 ## Pré-requisitos
 
-Certifique-se de que você tem as seguintes ferramentas instaladas:
+Certifique-se de que você tenha as seguintes ferramentas instaladas:
 
-- Node.js
-- npm
+- [Node.js](https://nodejs.org/) (inclui npm)
+- [Git](https://git-scm.com/)
 
-## Instalação
+## Passo a Passo
 
-1. Clone o repositório:
+1. **Crie um Novo Projeto**  
+   Abra o terminal e execute os seguintes comandos:  
    ```bash
-   git clone https://github.com/usuario/nome-do-repositorio.git
-   cd nome-do-repositorio
+   mkdir meu-projeto
+   cd meu-projeto
+   npm init -y
+
+2-instale dependencias 
+
+npm install express
+npm install typescript ts-node @types/node @types/express --save-dev
+
+3-instale o tsc
+
+npx tsc --init
+
+4-crie a estrutura de diretorios
+
+mkdir src
+touch src/index.ts
+
+5-escreva o codigo no servidor
+---------------------------------------
+
+import express from 'express';
+
+const app = express();
+const PORT = 3000;
+
+// Middleware para analisar JSON
+app.use(express.json());
+
+// Rota de exemplo
+app.get('/', (req, res) => {
+  res.send('Olá, mundo!');
+});
+
+// Iniciando o servidor
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+
+---------------------------------------
+
+6-Adicione Scripts no package.json
+
+---------------------------------------
+
+"scripts": {
+  "start": "node dist/index.js",
+  "dev": "ts-node src/index.ts"
+}
+
+---------------------------------------
+
+7-executar o servidor
+
+npm run dev
+
+
+
