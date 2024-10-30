@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) [Ano] [Seu Nome]
+Copyright (c) [2024] [Endreus kenny viana figueiró]
 
 Permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia
 deste software e arquivos de documentação associados (o "Software"), para lidar
